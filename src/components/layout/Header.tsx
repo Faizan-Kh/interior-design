@@ -46,15 +46,16 @@ export function Header() {
   if (pathname.startsWith("/admin")) return null;
 
   return (
+    <>
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-40 transition-all duration-500",
+        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
         solid
-          ? "bg-ivory/92 shadow-[0_1px_0_var(--line)] backdrop-blur-md"
+          ? "bg-ivory/96 shadow-[0_1px_0_var(--line)] backdrop-blur-md"
           : "bg-transparent",
       )}
     >
-      <div className="container-wide flex h-[76px] items-center justify-between">
+        <div className="container-wide flex h-[76px] items-center justify-between">
         <Link
           href="/"
           className={cn(
@@ -105,6 +106,8 @@ export function Header() {
         </div>
       </div>
 
+    </header>
+
       <AnimatePresence>
         {open ? (
           <motion.div
@@ -112,9 +115,9 @@ export function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: reduce ? 0 : 0.25 }}
-            className="fixed inset-0 top-[76px] z-40 bg-ivory lg:hidden"
+            className="fixed inset-0 top-[76px] z-40 bg-[#f6f1e9] lg:hidden"
           >
-            <div className="container-page flex h-full flex-col justify-between py-12">
+            <div className="container-page flex h-full min-h-[calc(100svh-76px)] flex-col justify-between bg-[#f6f1e9] py-12">
               <nav className="flex flex-col gap-6">
                 {navLinks.map((link, index) => (
                   <motion.div
@@ -125,7 +128,7 @@ export function Header() {
                   >
                     <Link
                       href={link.href}
-                      className="font-serif text-4xl"
+                      className="font-serif text-4xl text-charcoal"
                       onClick={() => setOpen(false)}
                     >
                       {link.label}
@@ -142,6 +145,6 @@ export function Header() {
           </motion.div>
         ) : null}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
