@@ -1,26 +1,139 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ivory: #f6f1e9;
+  --ivory-deep: #efe8dc;
+  --cream: #e7dfd2;
+  --stone: #cfc3b2;
+  --sand: #b7a894;
+  --taupe: #8a7a66;
+  --walnut: #6b5340;
+  --charcoal: #1c1916;
+  --ink: #2c2620;
+  --muted: #6f675d;
+  --line: rgba(28, 25, 22, 0.12);
+  --line-strong: rgba(28, 25, 22, 0.22);
+  --shadow: 0 18px 50px rgba(28, 25, 22, 0.08);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --header-h: 76px;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ivory: var(--ivory);
+  --color-ivory-deep: var(--ivory-deep);
+  --color-cream: var(--cream);
+  --color-stone: var(--stone);
+  --color-sand: var(--sand);
+  --color-taupe: var(--taupe);
+  --color-walnut: var(--walnut);
+  --color-charcoal: var(--charcoal);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --font-serif: var(--font-display);
+  --font-sans: var(--font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  background: var(--ivory);
+  color: var(--charcoal);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), sans-serif;
+  font-feature-settings: "ss01", "kern";
+  letter-spacing: -0.011em;
+}
+
+h1,
+h2,
+h3,
+.font-serif {
+  font-family: var(--font-display), serif;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+::selection {
+  background: #d8c7ad;
+  color: var(--charcoal);
+}
+
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .eyebrow {
+    font-family: var(--font-body), sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--taupe);
+  }
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.container-page {
+  width: min(1180px, calc(100% - 2.5rem));
+  margin-inline: auto;
+}
+
+.container-wide {
+  width: min(1360px, calc(100% - 2.5rem));
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .container-page,
+  .container-wide {
+    width: min(1180px, calc(100% - 5rem));
+  }
+
+  .container-wide {
+    width: min(1360px, calc(100% - 5rem));
+  }
+}
+
+
+.btn-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.img-cover {
+  object-fit: cover;
+  object-position: center;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
